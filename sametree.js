@@ -41,6 +41,27 @@ tree2.addRightNode(tree.root.right, 7)
 tree2.addLeftNode(tree.root.right, 15)
 
 
+//O(n) solution where n is the number of nodes in the binary tree
+//A recursive solution that doesn't use extra space
+
+function isSameTree(root, root2) {
+  if (!root && !root2) {
+    return true
+  }
+  
+  if (!root || !root2.root) {
+    return false
+  }
+  
+  if (root.val != root2.val) {
+    return false
+  }
+  
+  return isSameTree(root.left, root2.left) && isSameTree(root.right, root2.right)
+}
+return isSameTree(tree.root, tree2.root)
+
+
 //O(n) solution that does a preorder traversal over both trees and
 //compares the arrays.
 
